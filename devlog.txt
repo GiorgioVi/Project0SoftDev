@@ -1,6 +1,6 @@
 Project 0 Development Log:
 
-## Format all Devlogs updates like this: firstL -- TIMESTAMP/n + the update ##
+## Format all Devlogs updates like this: firstL -- TIMESTAMP\n + the update ##
 
 vidaliG -- 2017-10-19 04:06
   -Dev log created
