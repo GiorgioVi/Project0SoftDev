@@ -4,8 +4,6 @@ import os, csv
 my_app = Flask(__name__)
 my_app.secret_key = os.urandom(32)
 
-failure = ""
-success = ""
 logindict = {}
 
 with open('data/logins.csv', mode='r') as infile:
@@ -15,7 +13,7 @@ with open('data/logins.csv', mode='r') as infile:
 
 @my_app.route('/', methods=['GET', 'POST'])
 def root():
-    global failure, success
+    '''
     if ('user' in session):
         return render_template('welcome.html', name = session['user'])
     elif (failure != ""):
@@ -29,8 +27,9 @@ def root():
         flash(suctemp)
         return render_template('login.html')
     else:
-        return render_template('login.html')
-
+    '''
+    return render_template('login.html', Form = "login")
+'''
 @my_app.route('/submitted', methods=['GET','POST'])
 def submitted():
     global failure
@@ -88,7 +87,7 @@ def delete():
     
     return
 
-
+'''
 if __name__ == '__main__':
     my_app.debug = True
 my_app.run()
