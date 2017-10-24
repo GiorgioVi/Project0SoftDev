@@ -4,37 +4,32 @@ f="data/story.db"
 db = sqlite3.connect(f)
 c = db.cursor()
 #==========================================================
-def checkCreds(username, password):
+def validate(username, password):
     # print ("SELECT count(*) FROM users WHERE username = '%s' AND password = %s" % (username, password))
-    numbers = c.execute("SELECT count(*) FROM users WHERE username = '%s' AND password = '%s'" % (username, password))
-    for num in numbers:
+    found = c.execute("SELECT count(*) FROM users WHERE username = '%s' AND password = '%s'" % (username, password))
+    for num in found:
         return (num[0] == 1)
 
-def checkUsername(username):
+def findUsername(username):
     # print ("SELECT count(*) FROM users WHERE username = '%s'" % (username))
-    numbers = c.execute("SELECT count(*) FROM users WHERE username = '%s'" % (username))
-    for num in numbers:
+    found = c.execute("SELECT count(*) FROM users WHERE username = '%s'" % (username))
+    for num in username:
         return (num[0] == 1)
 
-'''
-def getNewID():
+def createNewID():
     #get the max of the id in users.id
-    c.execute("SELECT ")
-    for num in numbers:
-        return num[]
-'''
+    maxID = c.execute("SELECT MAX(id) FROM users")
+    for num in maxID:
+        return num[0] + 1
 
 def addUser(username, password):
     # print ("INSERT INTO users VALUES(%s, %s, %s)" % (username, password, ))
-    c.execute("INSERT INTO users VALUES('%s', '%s', '%s')" % (username, password, getNewId()))
+    c.execute("INSERT INTO users VALUES('%s', '%s', '%s')" % (username, password, 4))
     
 def updatePassword(password):
     # print ("UPDATE users SET password = %s" % (password))
     c.execute("UPDATE users SET password = %s" % (password))
 #==========================================================
-
-addUser("hope", "life")
-print(checkCreds("hope","life"))
 
 #==========================================================
 
