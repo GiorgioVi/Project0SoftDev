@@ -91,11 +91,18 @@ def home():
     return redirect(url_for("root"))
 
 @my_app.route('/createstory', methods=['GET','POST'])
-def home():
+def create():
     if ('user' in session):
         return render_template("create.html")
     return redirect(url_for("root"))
 
+@my_app.route('/submitcreate', methods=['GET','POST'])
+def submitcreate():
+    title = request.form["newtitle"]
+    startstory = request.form["newstory"]
+
+    return redirect(url_for())
+    
 if __name__ == '__main__':
     my_app.debug = True
     my_app.run()
