@@ -10,11 +10,12 @@
       <h3> {{message}} </h3>
     </center>
     {% endfor %}
-
-    Hello, please enter a username and password to register. <br><br>
+    <br>
+    <br>
+    <center> Hello, please enter a username and password to register. <br><br>
       <form method = "post" action ="/submitregister">
         Username:
-          <input type="text" name="newuser" required><br><br>
+        <input type="text" name="newuser" required> <br><br>
         Password:
           <input type = "password" name = "newpass" required>  <br><br>
         Confirm password:
@@ -26,7 +27,7 @@
             <input type="submit" value="Go Back"> <br> <br>
             <div style="color:#FF5733">
             </div>
-          </form>
+          </form> </center>
 
   </body>
 </html>

@@ -1,0 +1,34 @@
+<! DOCTYPE HTML>
+<html>
+  <head>
+    <title>  Create Story  </title>
+  </head>
+  <body>
+    {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <center>
+      <h3> {{message}} </h3>
+    </center>
+    {% endfor %}
+    <br>
+    <br>
+
+    <center>
+      Hello, please enter a title and the start of the story to create a story. <br><br>
+      <form method = "post" action ="/submitcreate">
+        Title:
+        <input type="text" name="newtitle" required> <br><br>
+        Start of Story:
+          <input type = "text" name = "newstory" required>  <br><br>
+          <input type="submit" value="Commit">
+        </form>
+
+        <form action = '/'>
+            <input type="submit" value="Go Back"> <br> <br>
+            <div style="color:#FF5733">
+            </div>
+          </form> 
+    </center>
+
+  </body>
+</html>
