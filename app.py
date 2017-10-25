@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for, flash
 import os, csv, sqlite3
+import db_func
 
 my_app = Flask(__name__)
 my_app.secret_key = os.urandom(32)
@@ -13,35 +14,18 @@ def root():
 
 @my_app.route('/submitted', methods=['GET','POST'])
 def submitted():
-
-    f = "data/story.db"
-    db =  sqlite3.connect(f)
-    c = db.cursor()
-
     username = request.form["name"]
-    passwrd= request.form["pass"]
+    password= request.form["pass"]
 
-    if inList(username, c.execute("SELECT username FROM users")):
-        if (passwrd == getPass(username, c.execute("SELECT username, password FROM users"))):
-            session['user'] = username
-        else:
-            flash("Wrong password")
+    status = db_func.validate(username, password)
+    
+    if status:
+        session['user'] = username
+    elif db_func.hasUsername(username):
+        flash("Wrong password")
     else:
         flash("User doesn't exist")
-    db.commit()
-    db.close()
     return redirect(url_for('root'))
-
-def inList(newuser, dbobj):
-    for x in dbobj:
-        if x[0] == newuser:
-            return True
-    return False
-
-def getPass(username, dbobj):
-    for x in dbobj:
-        if (x[0] == username):
-            return x[1]
 
 @my_app.route('/registration', methods=['GET','POST'])
 def register():
@@ -50,33 +34,20 @@ def register():
 @my_app.route('/submitregister', methods= ['GET', 'POST'])
 def submitregister():
 
-    f = "data/logins.db"
-    db =  sqlite3.connect(f)
-    c = db.cursor()
-    c.execute("CREATE TABLE IF NOT EXISTS login (user TEXT, pass NUMERIC)")
-
     username = request.form["newuser"]
-    passwrd = request.form["newpass"]
+    password = request.form["newpass"]
 
     if (passwrd != request.form["repeatpass"]):
         flash("Your passwords do not match. Please try again.")
         return render_template("register.html")
     else:
-        if notInList(username, c.execute("SELECT user FROM login")):
-            c.execute("INSERT INTO login VALUES (\"%s\",\"%s\");"%(username, passwrd))
-            flash("You have successfully registered your account! You may log in now.")
-            db.commit()
-            db.close()
-            return redirect(url_for("root"))
-        else:
+        if db_func.hasUsername(username):
             flash("An account with that username already exists. Please try again.")
             return render_template("register.html")
-
-def notInList(newuser, dbobj):
-    for x in dbobj:
-        if x[0] == newuser:
-            return False
-    return True
+        else:
+            db_func.addUser(username, password)
+            flash("You have successfully registered your account! You may log in now.")
+            return redirect(url_for("root"))
 
 @my_app.route('/loggedout', methods=['GET','POST'])
 def logout():

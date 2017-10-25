@@ -63,7 +63,7 @@ def getStoryID(title):
     for i in ids:
         return i[0]
     
-def getStoryEdit(title):
+def getRecentEdit(title):
     edit = c.execute("SELECT display FROM storylist WHERE title = '%s'" % (title))
     for e in edit:
         return e[0]
@@ -72,13 +72,9 @@ def getAuthor(title):
     author = c.execute("SELECT id FROM storylist WHERE title = '%s'" % (title))
     for a in author:
         return a[0]
-        
+    
 #==========================================================
 #TESTING
-'''
-addUser('connie', 'hello');
-updatePassword('connie','1234')
-'''
 
 #==========================================================
 
