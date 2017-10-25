@@ -71,12 +71,16 @@ def create():
 def submitcreate():
     title = request.form["newtitle"]
     startstory = request.form["newstory"]
-
-    return redirect(url_for())
+    if db_func.hasTitle(title):
+        flash("Title already exists!")
+    else:
+        db_func.addStory(db_func.getUserID(session['user']), title, startstory)
+        flash("Story has been created!")
+    return redirect(url_for("root"))
 
 if __name__ == '__main__':
     my_app.debug = True
     my_app.run()
 
-db.commit()
-db.close()
+#db.commit()
+#db.close()

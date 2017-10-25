@@ -34,6 +34,17 @@ def newID():
         db.close()
         return num[0] + 1
 
+def newStoryID():
+    db = sqlite3.connect(f)
+    c = db.cursor()
+    # get the max id
+    maxID = c.execute("SELECT MAX(storyid) FROM storylist")
+    for num in maxID:
+        # the newest id
+        db.commit()
+        db.close()
+        return num[0] + 1
+
 def addUser(username, password):
     db = sqlite3.connect(f)
     c = db.cursor()
@@ -45,6 +56,15 @@ def updatePassword(username, newpass):
     db = sqlite3.connect(f)
     c = db.cursor()
     c.execute("UPDATE users SET password = '%s' WHERE username = '%s'" % (newpass, username))
+    db.commit()
+    db.close()
+
+def addStory(id, title, text):
+    db = sqlite3.connect(f)
+    c = db.cursor()
+    storyid = newStoryID()
+    c.execute("INSERT INTO storylist VALUES('%s', '%s', '%s', '%s')" % (title, id, storyid, text))
+    c.execute("INSERT INTO useredit VALUES('%s', '%s', '%s')" % (id, storyid, text))
     db.commit()
     db.close()
 
@@ -101,6 +121,15 @@ def getStoryID(title):
     db = sqlite3.connect(f)
     c = db.cursor()
     ids = c.execute("SELECT storyid FROM storylist WHERE title = '%s'" % (title))
+    for i in ids:
+        db.commit()
+        db.close()
+        return i[0]
+
+def getUserID(username):
+    db = sqlite3.connect(f)
+    c = db.cursor()
+    ids = c.execute("SELECT id FROM users WHERE username = '%s'" % (username))
     for i in ids:
         db.commit()
         db.close()
