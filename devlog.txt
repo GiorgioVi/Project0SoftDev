@@ -23,7 +23,8 @@ shiX -- 2017-10-24 14:06
   -Added create.html
   -Modified home.html
 
-leiC -- 2017-10-24 20:30
+leiC -- 2017-10-24 21:41
   -added db_func.py with preliminary functions
   -added db_builder.py
   -changed databases to reflect original plan/schema
+  -worked on db function
