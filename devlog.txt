@@ -28,3 +28,7 @@ leiC -- 2017-10-24 21:41
   -added db_builder.py
   -changed databases to reflect original plan/schema
   -worked on db function
+
+vidaliG -- 2017-10-25 01:13
+  -Tried to login but realized the login system needs to be updated to the new database structure
+  -The logins db should not be created at all
