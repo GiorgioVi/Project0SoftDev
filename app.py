@@ -37,7 +37,7 @@ def submitregister():
     username = request.form["newuser"]
     password = request.form["newpass"]
 
-    if (passwrd != request.form["repeatpass"]):
+    if (password != request.form["repeatpass"]):
         flash("Your passwords do not match. Please try again.")
         return render_template("register.html")
     else:
