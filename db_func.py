@@ -2,27 +2,26 @@ import sqlite3
 
 f="data/story.db"
 #==========================================================
-def help(found):
-    for num in found:
-        return (num[0] == 1)
 
 def validate(username, password):
     db = sqlite3.connect(f)
     c = db.cursor()
     # print ("SELECT count(*) FROM users WHERE username = '%s' AND password = %s" % (username, password))
     found = c.execute("SELECT count(*) FROM users WHERE username = '%s' AND password = '%s'" % (username, password))
-    db.commit()
-    db.close()
-    return help(found)
+    for num in found:
+        db.commit()
+        db.close()
+        return (num[0] == 1)
 
 def hasUsername(username):
     db = sqlite3.connect(f)
     c = db.cursor()
     # print ("SELECT count(*) FROM users WHERE username = '%s'" % (username))
     found = c.execute("SELECT count(*) FROM users WHERE username = '%s'" % (username))
-    db.commit()
-    db.close()
-    return help(found)
+    for num in found:
+        db.commit()
+        db.close()
+        return (num[0] == 1)
 
 def newID():
     db = sqlite3.connect(f)
@@ -53,13 +52,19 @@ def hasTitle(title):
     db = sqlite3.connect(f)
     c = db.cursor()
     found = c.execute("SELECT count(*) FROM storylist WHERE title = '%s'" % (title))
-    return help(found)
+    for num in found:
+        db.commit()
+        db.close()
+        return (num[0] == 1)
 
 def hasContributed(userid, storyid):
     db = sqlite3.connect(f)
     c = db.cursor()
     found = c.execute("SELECT count(*) FROM useredit WHERE id = %s AND storyid = %s" % (userid, storyid))
-    return help(found)
+    for num in found:
+        db.commit()
+        db.close()
+        return (num[0] == 1)
 
 def getStoryTitle(storyid):
     db = sqlite3.connect(f)
