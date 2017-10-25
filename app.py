@@ -14,15 +14,15 @@ def root():
 @my_app.route('/submitted', methods=['GET','POST'])
 def submitted():
 
-    f = "data/logins.db"
+    f = "data/story.db"
     db =  sqlite3.connect(f)
     c = db.cursor()
-    
+
     username = request.form["name"]
     passwrd= request.form["pass"]
-    
-    if inList(username, c.execute("SELECT user FROM login")):
-        if (passwrd == getPass(username, c.execute("SELECT user, pass FROM login"))):
+
+    if inList(username, c.execute("SELECT username FROM users")):
+        if (passwrd == getPass(username, c.execute("SELECT username, password FROM users"))):
             session['user'] = username
         else:
             flash("Wrong password")
@@ -42,22 +42,22 @@ def getPass(username, dbobj):
     for x in dbobj:
         if (x[0] == username):
             return x[1]
-        
+
 @my_app.route('/registration', methods=['GET','POST'])
 def register():
     return render_template("register.html")
 
 @my_app.route('/submitregister', methods= ['GET', 'POST'])
 def submitregister():
-    
+
     f = "data/logins.db"
     db =  sqlite3.connect(f)
     c = db.cursor()
     c.execute("CREATE TABLE IF NOT EXISTS login (user TEXT, pass NUMERIC)")
-    
+
     username = request.form["newuser"]
     passwrd = request.form["newpass"]
-    
+
     if (passwrd != request.form["repeatpass"]):
         flash("Your passwords do not match. Please try again.")
         return render_template("register.html")
@@ -102,7 +102,7 @@ def submitcreate():
     startstory = request.form["newstory"]
 
     return redirect(url_for())
-    
+
 if __name__ == '__main__':
     my_app.debug = True
     my_app.run()
