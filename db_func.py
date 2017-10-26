@@ -86,6 +86,16 @@ def hasContributed(userid, storyid):
         db.close()
         return (num[0] == 1)
 
+def getStoriesAddedTo(userid):
+    db = sqlite3.connect(f)
+    c = db.cursor()
+    c.execute("SELECT storyid FROM useredit WHERE id = %s" % (userid))
+    list = c.fetchall()
+    db.commit()
+    db.close()
+    return list
+
+
 def getStoryTitle(storyid):
     db = sqlite3.connect(f)
     c = db.cursor()
