@@ -81,6 +81,32 @@ def submitcreate():
         flash("Story has been created!")
     return redirect(url_for("root"))
 
+@my_app.route('/readstory', methods=['GET','POST'])
+def read():
+    if ('user' in session):
+        stories = ""
+        for each in db_func.getStoriesAddedTo(db_func.getUserID(session['user'])):
+            stories += db_func.getStoryTitle(each[0]) + "\n"
+        return render_template("read.html", storiesAddedTo = stories)
+    return redirect(url_for("root"))
+
+@my_app.route('/editstory', methods=['GET','POST'])
+def edit():
+    if ('user' in session):
+        return render_template("edit.html")
+    return redirect(url_for("root"))
+
+@my_app.route('/submitedit', methods=['GET','POST'])
+def submitedit():
+    title = request.form["newtitle"]
+    startstory = request.form["newstory"]
+    if db_func.hasTitle(title):
+        flash("Title already exists!")
+    else:
+        db_func.addStory(db_func.getUserID(session['user']), title, startstory)
+        flash("Story has been created!")
+    return redirect(url_for("root"))
+
 if __name__ == '__main__':
     my_app.debug = True
     my_app.run()
