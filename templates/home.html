@@ -29,7 +29,10 @@
     </form>
 
     Stories you have added to: <br>
-    {{storiesAddedTo}}
+    {% for item in storiesAddedTo %}
+    {{item[0]}} <br> 
+    {% endfor %}
+
     <br><br>
     <form action = 'loggedout'>
       <input type="submit" value="Log Out"><br><br>

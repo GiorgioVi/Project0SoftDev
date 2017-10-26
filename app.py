@@ -58,10 +58,7 @@ def logout():
 @my_app.route('/home', methods=['GET','POST'])
 def home():
     if ('user' in session):
-        stories = ""
-        for each in db_func.getStoriesAddedTo(db_func.getUserID(session['user'])):
-            stories += db_func.getStoryTitle(each[0]) + "\n"
-        return render_template("home.html", storiesAddedTo = stories)
+        return render_template("home.html", storiesAddedTo = db_func.getStoriesAddedTo(db_func.getUserID(session['user'])))
     return redirect(url_for("root"))
 
 @my_app.route('/createstory', methods=['GET','POST'])
