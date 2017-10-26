@@ -36,3 +36,7 @@ vidaliG -- 2017-10-25 01:13
 kalmakovaB -- 2017-10-25 19:18
   -Added to db_func.py to facilitate adding to storylist
   -Added to app.py to make the create story function
+
+kalmakovaB -- 2017-10-25 20:47
+  -Home page displayes stories added to
+  -logout buttons added
