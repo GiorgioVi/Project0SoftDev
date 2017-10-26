@@ -40,3 +40,10 @@ kalmakovaB -- 2017-10-25 19:18
 kalmakovaB -- 2017-10-25 20:47
   -Home page displayes stories added to
   -logout buttons added
+
+vidaliG -- 2017-10-26 13:36
+  -Login system near completion/// check for bugs
+  -Database functions very close to completion
+  -Create story is working
+  In Progress::::: Viewing/Editng Stories. Data funcs work but we have yet to produce it visually
+  -Visual Optimization but this is a much later step!!!!
