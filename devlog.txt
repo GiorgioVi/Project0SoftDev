@@ -48,7 +48,7 @@ vidaliG -- 2017-10-26 13:36
   In Progress::::: Viewing/Editng Stories. Data funcs work but we have yet to produce it visually
   -Visual Optimization but this is a much later step!!!!
 
-Shi -- 2017-10-26 13:46
+shiX -- 2017-10-26 13:46
     -Added edit.html
     -Added edit route
     -Added read.html
@@ -57,4 +57,8 @@ Shi -- 2017-10-26 13:46
  kalmakovaB -- 2017-10-26 13:57
     -html design things
     
+shiX -- 2017-10-27 11:23
+     -Edited app.p
+     -Edited edit.html
+     -Edited read.html
  

@@ -15,16 +15,19 @@
 
     <center>
       Hello, please choose a story to edit. <br><br>
-
-        <form action = '/'>
-          <input type="submit" value="Go Back"> <br> <br>
-          <div style="color:#FF5733">
-          </div>
-        </form>
-	<form action = 'loggedout'>
-	  <input type="submit" value="Log Out"><br><br>
-	</form>
+      
+      {% for item in storiesNotAddedTo %}
+      {{item[0]}} <br> 
+      {% endfor %}
+      <form action = '/'>
+        <input type="submit" value="Go Back"> <br> <br>
+        <div style="color:#FF5733">
+        </div>
+      </form>
+      <form action = 'loggedout'>
+	<input type="submit" value="Log Out"><br><br>
+      </form>
     </center>
- 
+    
   </body>
 </html>

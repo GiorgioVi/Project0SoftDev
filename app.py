@@ -81,16 +81,13 @@ def submitcreate():
 @my_app.route('/readstory', methods=['GET','POST'])
 def read():
     if ('user' in session):
-        stories = ""
-        for each in db_func.getStoriesAddedTo(db_func.getUserID(session['user'])):
-            stories += db_func.getStoryTitle(each[0]) + "\n"
-        return render_template("read.html", storiesAddedTo = stories)
+        return render_template("read.html", storiesAddedTo = db_func.getStoriesAddedTo(db_func.getUserID(session['user'])))
     return redirect(url_for("root"))
 
 @my_app.route('/editstory', methods=['GET','POST'])
 def edit():
     if ('user' in session):
-        return render_template("edit.html")
+        return render_template("edit.html", storiesNotAddedTo = db_func.getStoriesAddedTo(db_func.getUserID(session['user'])))
     return redirect(url_for("root"))
 
 @my_app.route('/submitedit', methods=['GET','POST'])

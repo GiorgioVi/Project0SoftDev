@@ -12,8 +12,14 @@
     {% endfor %}
 
     Stories: <br>
-    {{ storiesAddedTo }}
-
+    {% for item in storiesAddedTo %}
+    {{item[0]}} <br> 
+    {% endfor %}
+    <form action = '/'>
+      <input type="submit" value="Go Back"> <br> <br>
+      <div style="color:#FF5733">
+      </div>
+    </form>
     <form action = 'loggedout'>
       <input type="submit" value="Log Out"><br><br>
     </form>
