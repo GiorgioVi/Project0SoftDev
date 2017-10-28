@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>  Home  </title>
+  </head>
+
+  <body>
+    <center>
+    {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <h3> {{message}} </h3>
+    {% endfor %}
+
+    <h3> This page works. </h3>
+
+    <form method="post" action="/view">
+      {% for details in view %}
+      <button name="storyID" value={{details[0]}}>
+	<b>{{details[1]}}</b>
+	<br>Your Edit: {{details[2]}}
+      </button>
+      {% endfor %}
+    </form>
+
+    <form method="post" action="/edit">
+      {% for details in edit %}
+      <button name="storyID" value={{details[0]}}>
+	<b>{{details[1]}}</b>
+	<br>Last Edit: {{details[2]}}
+      </button>
+      {% endfor %}
+    </form>
+    
+    <form method="get" action="/create">
+      <input type="submit" value="Create">
+    </form>
+    
+    <form method="get" action="/logout">
+      <input type="submit" value="Log Out"><br><br>
+    </form>
+    </center>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>  Create Story  </title>
+  </head>
+  <body>
+
+    {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <h3> {{message}} </h3>
+    {% endfor %}
+    
+    <center>
+      Hello, please enter a title and the start of the story to create a story. <br><br>
+      <form method="post" action="/create">
+        Title:
+        <input type="text" name="title" required> <br><br>
+        Start of Story:
+        <input type="text" name="edit" required>  <br><br>
+        <input type="submit" value="Submit">
+      </form>
+    </center>
+    
+  </body>
+</html>

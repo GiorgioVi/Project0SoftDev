@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>  Edit {{title}}  </title>
+  </head>
+  <body>
+    {% set messages = get_flashed_messages() %}
+    {% for message in messages %}
+    <center>
+      <h3> {{message}} </h3>
+    </center>
+    {% endfor %}
+    <br>
+    <br>
+
+    <center>
+      <form method="post" action="/editing">
+        Title: {{title}}
+	<br><br>
+	Last Edit: {{display}}
+	<br><br>
+	Your Edit:
+        <input type="text" name="edit" required>  <br><br>
+	<button name="storyID" value={{ID}}>
+	  Submit
+	</button>
+      </form>
+    </center>
+    
+  </body>
+</html>
