@@ -12,7 +12,8 @@
     {% endfor %}
 
     <h3> This page works. </h3>
-
+    <br><br>
+    <h3> View Stories</h3>
     <form method="post" action="/view">
       {% for details in view %}
       <button name="storyID" value={{details[0]}}>
@@ -21,7 +22,8 @@
       </button>
       {% endfor %}
     </form>
-
+    <br><br>
+    <h3> Edit Stories</h3>
     <form method="post" action="/edit">
       {% for details in edit %}
       <button name="storyID" value={{details[0]}}>
