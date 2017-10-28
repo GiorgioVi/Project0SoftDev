@@ -62,3 +62,10 @@ shiX -- 2017-10-27 11:23
      -Edited edit.html
      -Edited read.html
  
+leiC -- 2017-10-28 10:39 (over the week, but never pushed)
+     -Fully functional project in projstory
+     -Changed certain db functions
+     -Reduced templates
+     -Redid login system/register system
+     -Changed it so you can view stories through buttons/POST links
+     -Changed it so you can edit stories through buttons/POST links
