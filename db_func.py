@@ -95,6 +95,23 @@ def getStoriesAddedTo(userid):
     db.close()
     return list
 
+def getStoriesAddedToT(userid):
+    db = sqlite3.connect(f)
+    c = db.cursor()
+    c.execute("SELECT storyid FROM useredit WHERE id = %s" % (userid))
+    list = c.fetchall()
+    db.commit()
+    db.close()
+    return list
+
+def getStoriesNotAddedTo(userid):
+    db = sqlite3.connect(f)
+    c = db.cursor()
+    c.execute("SELECT storyid FROM useredit WHERE id != %s" % (userid))
+    list = c.fetchall()
+    db.commit()
+    db.close()
+    return list
 
 def getStoryTitle(storyid):
     db = sqlite3.connect(f)

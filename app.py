@@ -58,7 +58,7 @@ def logout():
 @my_app.route('/home', methods=['GET','POST'])
 def home():
     if ('user' in session):
-        return render_template("home.html", storiesAddedTo = db_func.getStoriesAddedTo(db_func.getUserID(session['user'])))
+        return render_template("home.html", storiesAddedTo = db_func.getStoriesAddedToT(db_func.getUserID(session['user'])))
     return redirect(url_for("root"))
 
 @my_app.route('/createstory', methods=['GET','POST'])
@@ -81,13 +81,13 @@ def submitcreate():
 @my_app.route('/readstory', methods=['GET','POST'])
 def read():
     if ('user' in session):
-        return render_template("read.html", storiesAddedTo = db_func.getStoriesAddedTo(db_func.getUserID(session['user'])))
+        return render_template("read.html", storiesAddedTo = db_func.getStoriesAddedToT(db_func.getUserID(session['user'])))
     return redirect(url_for("root"))
 
 @my_app.route('/editstory', methods=['GET','POST'])
 def edit():
     if ('user' in session):
-        return render_template("edit.html", storiesNotAddedTo = db_func.getStoriesAddedTo(db_func.getUserID(session['user'])))
+        return render_template("edit.html", storiesNotAddedTo = db_func.getStoriesNotAddedTo(db_func.getUserID(session['user'])))
     return redirect(url_for("root"))
 
 @my_app.route('/submitedit', methods=['GET','POST'])

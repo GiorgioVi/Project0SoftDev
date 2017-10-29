@@ -69,3 +69,6 @@ leiC -- 2017-10-28 10:39 (over the week, but never pushed)
      -Redid login system/register system
      -Changed it so you can view stories through buttons/POST links
      -Changed it so you can edit stories through buttons/POST links
+
+shiX -- 2017-10-29 12:03
+     -Fixed edit route and edit.html
