@@ -101,6 +101,13 @@ def submitedit():
         flash("Story has been created!")
     return redirect(url_for("root"))
 
+@my_app.route('/story', methods=['GET', 'POST'])
+def story():
+    stid = request.form["sid"]
+    if ('user' in session):
+        return render_template("story.html", story = db_func.getFullStory(stid))
+    return redirect(url_for("root"))
+
 if __name__ == '__main__':
     my_app.debug = True
     my_app.run()

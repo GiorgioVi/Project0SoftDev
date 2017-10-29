@@ -30,7 +30,10 @@
 
     Stories you have added to: <br>
     {% for item in storiesAddedTo %}
-    {{item[0]}} <br> 
+    <form method = "post" action = '/story'>
+      <input type="submit" value={{item[0]}}> <br><br>
+      <input type="hidden" id="sid" name="sid" value={{item[1]}}>
+    </form>
     {% endfor %}
 
     <br><br>

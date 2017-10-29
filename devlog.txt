@@ -72,3 +72,7 @@ leiC -- 2017-10-28 10:39 (over the week, but never pushed)
 
 shiX -- 2017-10-29 12:03
      -Fixed edit route and edit.html
+     -Edited several db functions
+     -Created a route and buttons to read stories
+     -Edited home to display the stories you've edited as buttons
+     -Added a column in useredit containing the title

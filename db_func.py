@@ -64,7 +64,7 @@ def addStory(id, title, text):
     c = db.cursor()
     storyid = newStoryID()
     c.execute("INSERT INTO storylist VALUES('%s', '%s', '%s', '%s')" % (title, id, storyid, text))
-    c.execute("INSERT INTO useredit VALUES('%s', '%s', '%s')" % (id, storyid, text))
+    c.execute("INSERT INTO useredit VALUES('%s', '%s', '%s', '%s')" % (id, storyid, text, title))
     db.commit()
     db.close()
 
@@ -98,7 +98,7 @@ def getStoriesAddedTo(userid):
 def getStoriesAddedToT(userid):
     db = sqlite3.connect(f)
     c = db.cursor()
-    c.execute("SELECT storyid FROM useredit WHERE id = %s" % (userid))
+    c.execute("SELECT title, storyid FROM useredit WHERE id = %s" % (userid))
     list = c.fetchall()
     db.commit()
     db.close()
@@ -108,6 +108,15 @@ def getStoriesNotAddedTo(userid):
     db = sqlite3.connect(f)
     c = db.cursor()
     c.execute("SELECT storyid FROM useredit WHERE id != %s" % (userid))
+    list = c.fetchall()
+    db.commit()
+    db.close()
+    return list
+
+def getStoriesNotAddedTo(userid):
+    db = sqlite3.connect(f)
+    c = db.cursor()
+    c.execute("SELECT title FROM useredit WHERE id != %s" % (userid))
     list = c.fetchall()
     db.commit()
     db.close()
@@ -125,7 +134,7 @@ def getStoryTitle(storyid):
 def getFullStory(storyid):
     db = sqlite3.connect(f)
     c = db.cursor()
-    edits = c.execute("SELECT display FROM useredit WHERE storyid = %s" % (storyid))
+    edits = c.execute("SELECT display FROM storylist WHERE storyid = %s" % (storyid))
     story = ""
     for edit in edits:
         story += edit[0]
