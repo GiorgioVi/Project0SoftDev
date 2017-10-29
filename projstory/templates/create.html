@@ -1,25 +1,59 @@
-<!DOCTYPE HTML>
+<! DOCTYPE HTML>
 <html>
   <head>
     <title>  Create Story  </title>
   </head>
+  <style>
+    body {background-color: D3BFA0;}
+    div.box {
+    background-color: EFE7C4;
+    width: 700px;
+    padding: 30px;
+    border-radius: 25px;
+    }
+    img {
+    border-radius:25px;
+    opacity:.86;
+    height: 300px;
+    width:600px;
+    }
+  </style>
   <body>
-
+    <center>
     {% set messages = get_flashed_messages() %}
     {% for message in messages %}
     <h3> {{message}} </h3>
     {% endfor %}
-    
-    <center>
-      Hello, please enter a title and the start of the story to create a story. <br><br>
-      <form method="post" action="/create">
-        Title:
-        <input type="text" name="title" required> <br><br>
-        Start of Story:
-        <input type="text" name="edit" required>  <br><br>
-        <input type="submit" value="Submit">
-      </form>
     </center>
     
+    <center>
+
+      <center>
+	<br><br>
+	<h1>Story Time</h1><br>
+	<img src="http://www.amandaargue.com/wp-content/uploads/2016/05/Fotolia_43695416_Subscription_Monthly_M-630x315.jpg" alt="StoryTime">
+	<br><br><br>
+	<div class="box">
+	  Hello, please enter a title and the start of the story to create a story. <br><br>
+	  <form method="post" action="/create">
+            Title:
+            <input type="text" name="title" required> <br><br>
+            Start of Story:
+            <input type="text" name="edit" required>  <br><br>
+            <input type="submit" value="Submit">
+	  </form>
+	</div>
+	<br><br>
+	<form method="get" action="/login">
+	  <input type="submit" value="Go Back">
+	</form>
+	
+	
+	<form method="get" action="/logout">
+	  <input type="submit" value="Log Out">
+	</form>
+	
+      </center>
+      
   </body>
 </html>

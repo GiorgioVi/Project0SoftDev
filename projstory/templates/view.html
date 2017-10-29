@@ -1,12 +1,42 @@
-<!DOCTYPE HTML>
+<! DOCTYPE HTML>
 <html>
   <head>
     <title>  Story  </title>
   </head>
+  <style>
+    body {background-color: D3BFA0;}
+    div.box {
+    background-color: EFE7C4;
+    width: 900px;
+    padding: 30px;
+    border-radius: 25px;
+    }
+    img {
+    border-radius:25px;
+    opacity:.86;
+    height: 300px;
+    width:600px;
+    }
+  </style>
   <body>
-
-    <h3>{{title}}</h3>
-    <p>{{fullStory}}</p>
+    <center>
+      <br>
+      <h1>{{title}}</h1><br>
+      <img src="http://www.amandaargue.com/wp-content/uploads/2016/05/Fotolia_43695416_Subscription_Monthly_M-630x315.jpg" alt="StoryTime">
+      <br><br><br>
+      <div class="box">
+	<p>{{fullStory}}</p>
+      </div>
+      <br><br>
+      <form method="get" action="/login">
+	<input type="submit" value="Go Back">
+      </form>
+      
+      
+      <form method="get" action="/logout">
+	<input type="submit" value="Log Out">
+      </form>
+    </center>
     
   </body>
 </html>

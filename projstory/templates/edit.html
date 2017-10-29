@@ -1,8 +1,23 @@
-<!DOCTYPE HTML>
+<! DOCTYPE HTML>
 <html>
   <head>
     <title>  Edit {{title}}  </title>
   </head>
+  <style>
+    body {background-color: D3BFA0;}
+    div.box {
+    background-color: EFE7C4;
+    width: 900px;
+    padding: 30px;
+    border-radius: 25px;
+    }
+    img {
+    border-radius:25px;
+    opacity:.86;
+    height: 300px;
+    width:600px;
+    }
+  </style>
   <body>
     {% set messages = get_flashed_messages() %}
     {% for message in messages %}
@@ -10,10 +25,13 @@
       <h3> {{message}} </h3>
     </center>
     {% endfor %}
-    <br>
-    <br>
 
     <center>
+      <br>
+      <h1>Add to {{title}}</h1><br>
+      <img src="http://www.amandaargue.com/wp-content/uploads/2016/05/Fotolia_43695416_Subscription_Monthly_M-630x315.jpg" alt="StoryTime">
+      <br><br><br>
+      <div class="box">
       <form method="post" action="/editing">
         Title: {{title}}
 	<br><br>
@@ -24,6 +42,16 @@
 	<button name="storyID" value={{ID}}>
 	  Submit
 	</button>
+      </form>
+      </div>
+      <br><br>
+      <form method="get" action="/login">
+	<input type="submit" value="Go Back">
+      </form>
+      
+      
+      <form method="get" action="/logout">
+	<input type="submit" value="Log Out">
       </form>
     </center>
     

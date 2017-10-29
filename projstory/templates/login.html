@@ -4,7 +4,17 @@
     <title>  Login  </title>
   </head>
   <style>
-    body {background-color: powderblue;}
+    body {background-color: D3BFA0;}
+    div.box {
+    background-color: EFE7C4;
+    width: 400px;
+    padding: 10px;
+    border-radius: 25px;
+    }
+    img {
+    border-radius:25px;
+    opacity:.86;
+    }
   </style>
   <body>
     {% set messages = get_flashed_messages() %}
@@ -14,9 +24,11 @@
     </center>
       {% endfor %}
     <center>
-      <h1>Story Time</h1>
-      <img src="http://www.amandaargue.com/wp-content/uploads/2016/05/Fotolia_43695416_Subscription_Monthly_M-630x315.jpg" alt="StoryTime">
       <br><br>
+      <h1>Story Time</h1><br>
+      <img src="http://www.amandaargue.com/wp-content/uploads/2016/05/Fotolia_43695416_Subscription_Monthly_M-630x315.jpg" alt="StoryTime">
+      <br><br><br>
+      <div class="box">
       <form method = "post" action ="/login">
 
 	Enter your username:<br>
@@ -32,6 +44,7 @@
 	Don't have an account?
 	<input type="submit" value = "Register">
       </form>
+      </div>
   </center>
   </body>
 </html>
