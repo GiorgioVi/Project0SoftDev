@@ -80,3 +80,7 @@ shiX -- 2017-10-29 12:03
 
 leiC -- 2017-10-30 12:07 AM
      -fixed the bug.........................
+
+shiX -- 2017-10-29 12:13
+     -Added back button to register
+     -Created dw's account
