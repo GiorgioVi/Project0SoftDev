@@ -67,8 +67,8 @@ def addStory(id, title, text):
     db = sqlite3.connect(f)
     c = db.cursor()
     storyid = newStoryID()
-    c.execute("INSERT INTO storylist VALUES('%s', '%s', '%s', '%s')" % (title, id, storyid, text))
-    c.execute("INSERT INTO useredit VALUES('%s', '%s', '%s')" % (id, storyid, text))
+    c.execute("INSERT INTO storylist VALUES('%s', %s, '%s', %s)" % (title, storyid, text, id))
+    c.execute("INSERT INTO useredit VALUES(%s, %s, '%s')" % (id, storyid, text))
     db.commit()
     db.close()
 

@@ -14,7 +14,7 @@ def root():
 def login():
     if 'user' in session:
         ID = db_func.getID(session['user'])
-        print (db_func.getStoriesNotAddedTo(ID))
+        print db_func.getStoriesAddedTo(ID)
         return render_template("home.html", view = db_func.getStoriesAddedTo(ID), edit = db_func.getStoriesNotAddedTo(ID))
     else:
         if (request.method == 'GET'):
@@ -73,6 +73,7 @@ def create():
                 return render_template("create.html")
             else:
                 userID = db_func.getID(session['user'])
+                print request.form
                 db_func.addStory(userID, title, edit)
                 flash("Story has been created.")
                 return redirect(url_for('login'))
