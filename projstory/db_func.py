@@ -140,7 +140,7 @@ def getEdit(storyID):
     db.close()
     return edit[0][0]
 
-'''
+
 def updatePassword(username, newpass):
     db = sqlite3.connect(f)
     c = db.cursor()
@@ -165,7 +165,7 @@ def getAuthor(title):
         db.commit()
         db.close()
         return a[0]
-'''
+
 #==========================================================
 #TESTING
 #print(getStoryID('testing for admin'))
