@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session, redirect, url_for, flash
-import os, csv, sqlite3
+import os, csv, sqlite3, hashlib
 import db_func
 
 my_app = Flask(__name__)
@@ -22,7 +22,9 @@ def login():
         else:
             username = request.form["username"]
             password = request.form["password"]
-            status = db_func.validate(username, password)
+            hash_obj = hashlib.sha256(password)
+            hex_dig = hash_obj.hexdigest()
+            status = db_func.validate(username, hex_dig)
             if status:
                 session["user"] = username
             elif db_func.hasUsername(username):
@@ -43,7 +45,9 @@ def register():
             if db_func.hasUsername(username):
                 flash("Username taken.")
             else:
-                db_func.addUser(username, password)
+                hash_obj = hashlib.sha256(password)
+                hex_dig = hash_obj.hexdigest()
+                db_func.addUser(username, hex_dig)
                 flash("Your account has been registered.")
                 return redirect(url_for("login"))
     return render_template("register.html")
