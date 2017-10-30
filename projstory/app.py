@@ -32,7 +32,7 @@ def login():
             else:
                 flash("Username does not exist.")
             return redirect(url_for('login'))
-        
+
 @my_app.route('/register', methods=['GET','POST'])
 def register():
     if (request.method == 'POST'):
@@ -108,14 +108,14 @@ def editted():
     if ('user' in session):
         ID = request.form["storyID"]
         display = db_func.getEdit(ID)
-        if(len(request.form["edit"]) < 4):
+        if(len(request.form["edit"]) < 50):
             userID = db_func.getID(session['user'])
             db_func.insertEdit(userID, request.form["edit"], ID)
             flash("Added to story.")
             return redirect(url_for('login'))
         else:
-            flash("Only 100 characters allowed.")
-            return render_template("edit.html",title = db_func.getTitle(ID), display = db_func.getEdit(ID), ID = ID) 
+            flash("Only 50 characters allowed.")
+            return render_template("edit.html",title = db_func.getTitle(ID), display = db_func.getEdit(ID), ID = ID)
     else:
         flash("Please login.")
         return redirect(url_for("login"))
