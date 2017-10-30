@@ -1,0 +1,11 @@
+Our original design template provided us a good base for our project, but as we
+began work we realized we were missing some key components. First of all, our
+page organization needed to be amended. Originally we did not know how we were
+going to present the stories to the users. During our work process we decided to
+have a page for editing a story, viewing a story, and creating a story. Secondly,
+we did not think to have password encryption in our software. However, after
+discussing with Mr. Dyrland-Weaver he wisely suggested that we should implement
+password hashing for user security.
+
+For the most part our original design guided us in the right direction but did
+need a few tweaks as we coded our assignment.
