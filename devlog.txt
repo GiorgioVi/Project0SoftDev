@@ -76,3 +76,4 @@ shiX -- 2017-10-29 12:03
      -Created a route and buttons to read stories
      -Edited home to display the stories you've edited as buttons
      -Added a column in useredit containing the title
+     -Created hashing of passwords
