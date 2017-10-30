@@ -53,7 +53,7 @@ def getID(username):
     db.commit()
     db.close()
     return ids[0][0]
-    
+
 def hasTitle(title):
     db = sqlite3.connect(f)
     c = db.cursor()
@@ -139,7 +139,7 @@ def getEdit(storyID):
     db.commit()
     db.close()
     return edit[0][0]
-    
+
 '''
 def updatePassword(username, newpass):
     db = sqlite3.connect(f)
@@ -147,7 +147,7 @@ def updatePassword(username, newpass):
     c.execute("UPDATE users SET password = '%s' WHERE username = '%s'" % (newpass, username))
     db.commit()
     db.close()
-    
+
 def getStoryID(title):
     db = sqlite3.connect(f)
     c = db.cursor()
@@ -156,7 +156,7 @@ def getStoryID(title):
         db.commit()
         db.close()
         return i[0]
-    
+
 def getAuthor(title):
     db = sqlite3.connect(f)
     c = db.cursor()
@@ -168,5 +168,5 @@ def getAuthor(title):
 '''
 #==========================================================
 #TESTING
-print(getStoryID('testing for admin'))
+#print(getStoryID('testing for admin'))
 #==========================================================
