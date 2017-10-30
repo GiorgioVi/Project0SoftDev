@@ -54,7 +54,7 @@ shiX -- 2017-10-26 13:46
     -Added read.html
     -Added read route
     
- kalmakovaB -- 2017-10-26 13:57
+kalmakovaB -- 2017-10-26 13:57
     -html design things
     
 shiX -- 2017-10-27 11:23
@@ -77,3 +77,6 @@ shiX -- 2017-10-29 12:03
      -Edited home to display the stories you've edited as buttons
      -Added a column in useredit containing the title
      -Created hashing of passwords
+
+leiC -- 2017-10-30 12:07 AM
+     -fixed the bug.........................
