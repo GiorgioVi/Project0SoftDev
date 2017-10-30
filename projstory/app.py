@@ -32,7 +32,7 @@ def login():
             else:
                 flash("Username does not exist.")
             return redirect(url_for('login'))
-
+        
 @my_app.route('/register', methods=['GET','POST'])
 def register():
     if (request.method == 'POST'):
@@ -115,7 +115,7 @@ def editted():
             return redirect(url_for('login'))
         else:
             flash("Only 50 characters allowed.")
-            return render_template("edit.html",title = db_func.getTitle(ID), display = db_func.getEdit(ID), ID = ID)
+            return render_template("edit.html",title = db_func.getTitle(ID), display = db_func.getEdit(ID), ID = ID) 
     else:
         flash("Please login.")
         return redirect(url_for("login"))
