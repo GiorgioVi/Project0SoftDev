@@ -5,7 +5,9 @@ going to present the stories to the users. During our work process we decided to
 have a page for editing a story, viewing a story, and creating a story. Secondly,
 we did not think to have password encryption in our software. However, after
 discussing with Mr. Dyrland-Weaver he wisely suggested that we should implement
-password hashing for user security.
+password hashing for user security. We also decided to have only one database for
+all of our data, instead of having an individual database for login info and
+another for holding stories.
 
 For the most part our original design guided us in the right direction but did
 need a few tweaks as we coded our assignment.
